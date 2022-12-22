@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    function:
+      definition: invokeAnotherLambda
+    scan:
+      packages: com.haroon.lambda.function
+
+logging:
+  level:
+    ROOT: INFO
