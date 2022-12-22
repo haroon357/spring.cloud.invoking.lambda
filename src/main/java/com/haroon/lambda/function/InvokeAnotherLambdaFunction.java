@@ -8,20 +8,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 @RequiredArgsConstructor
 @Component(value = "invokeAnotherLambda")
 @Slf4j
-public class InvokeAnotherLambdaFunction implements Supplier<Flux<Customer>> {
+public class InvokeAnotherLambdaFunction implements Supplier<List<Customer>> {
     private final CustomerService customerService;
     @Override
-    public Flux<Customer> get() {
+    public List<Customer> get() {
         log.info("getting customers by invoking another lambda");
 
-       Flux<Customer> customerFlux = customerService.getCustomers();
-       log.info("customerFlux count"+customerFlux.count());
-       return customerFlux;
+       List<Customer> customers = customerService.getCustomers();
+       log.info("customerFlux count"+customers.size());
+       return customers;
     }
 
 }
